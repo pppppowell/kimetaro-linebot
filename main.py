@@ -49,7 +49,7 @@ def handler_message(event):
         event.reply_token,
         TextSendMessage(text="なに"))
         start=True
-    if (start == True):
+    if (start == True and event.message.text != "決めて"):
         get_text(event.message.text)
     if (event.message.text == "決めて" and start == True):
         start = False
