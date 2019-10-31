@@ -41,7 +41,7 @@ start = False
 texts=[]
 
 @handler.add(MessageEvent, message=TextMessage)
-def handler_message(event):
+def handler_message(event,start):
     if (event.message.text == "決め太郎" and start==False):
         line_bot_api.reply_message(
         event.reply_token,
