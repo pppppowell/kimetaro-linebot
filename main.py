@@ -40,7 +40,8 @@ def callback():
     return 'OK'
 
 @handler.add(MessageEvent, message=TextMessage)
-def handler_message(event,start):
+def handler_message(event):
+    global start
     if (event.message.text == "決め太郎" and start==False):
         line_bot_api.reply_message(
         event.reply_token,
