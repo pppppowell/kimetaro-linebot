@@ -61,7 +61,7 @@ def handler_message(event):
 
 def get_text(text):
     global texts
-    texts.append = text
+    texts.append(text)
 
 if __name__ == "__main__":
 # app.run()
