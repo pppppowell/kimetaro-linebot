@@ -12,7 +12,10 @@ from linebot.models import (
 import os
 import random
 
+from account_response import Response
+
 app = Flask(__name__)
+res = Response()
 
 YOUR_CHANNEL_ACCESS_TOKEN = os.environ[]
 YOUR_CHANNEL_SECRET = os.environ[]
@@ -48,7 +51,7 @@ def handler_message(event):
         texts.clear()
         line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text="ほいほい"))
+        TextSendMessage(text=os.environ[res.nameResponse()]))
         start = True
     elif (start == True):
         if (event.message.text != "決めて"):
@@ -57,7 +60,7 @@ def handler_message(event):
             rand = random.randrange(len(texts))
             line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="「"+texts[rand]+"」でええんちゃう！？！？"))
+            TextSendMessage(text="「"+texts[rand]+"」"+os.environ[res.judgeResponse()]))
             texts.clear()
             start = False
 
