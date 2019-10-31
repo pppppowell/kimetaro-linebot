@@ -54,15 +54,21 @@ def handler_message(event):
         TextSendMessage(text=res.nameResponse()))
         start = True
     elif (start == True):
-        if (event.message.text != "決めて"):
-            get_text(event.message.text)
-        elif (event.message.text == "決めて"):
+        if (event.message.text == "決めて"):
             rand = random.randrange(len(texts))
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="「"+texts[rand]+"」"+res.judgeResponse()))
             texts.clear()
             start = False
+        elif (event.message.text == "なんでもない"):
+            line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="そっか"))
+            texts.clear()
+            start = False
+        else :
+            get_text(event.message.text)
 
 def get_text(text):
     global texts
