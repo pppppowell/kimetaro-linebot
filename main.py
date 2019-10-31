@@ -59,6 +59,7 @@ def handler_message(event):
         texts=[]
 
 def get_text(text):
+    global texts
     texts.append = text
 
 if __name__ == "__main__":
