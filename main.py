@@ -42,20 +42,21 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handler_message(event):
     global start
+    global texts
     if (event.message.text == "決め太郎" and start==False):
         line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text="なに"))
         start=True
-    # if (start == True):
-    #     get_text(event.message.text)
-    # if (event.message.text == "決めて" and start == True):
-    #     start = False
-    #     rand = random.randrange(len(texts))
-    #     line_bot_api.reply_message(
-    #     event.reply_token,
-    #     TextSendMessage(text="「"+texts[rand]+"」でええんちゃう！？！？"))
-    #     texts=[]
+    if (start == True):
+        get_text(event.message.text)
+    if (event.message.text == "決めて" and start == True):
+        start = False
+        rand = random.randrange(len(texts))
+        line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text="「"+texts[rand]+"」でええんちゃう！？！？"))
+        texts=[]
 
 def get_text(text):
     texts.append = text
