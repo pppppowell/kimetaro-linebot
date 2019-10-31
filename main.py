@@ -47,17 +47,17 @@ def handler_message(event):
     if (event.message.text == "決め太郎" and start==False):
         line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text="なに"))
+        TextSendMessage(text="ほいほい"))
         start=True
-    if (start == True and event.message.text != "決めて"):
+    if (event.message.text != "決めて" and start == True):
         get_text(event.message.text)
     if (event.message.text == "決めて" and start == True):
-        start = False
         rand = random.randrange(len(texts))
         line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text="「"+texts[rand]+"」でええんちゃう！？！？"))
-        texts=[]
+        texts.clear()
+        start = False
 
 def get_text(text):
     global texts
