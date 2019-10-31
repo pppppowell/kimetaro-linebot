@@ -51,7 +51,7 @@ def handler_message(event):
         texts.clear()
         line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=os.environ[res.nameResponse()]))
+        TextSendMessage(text=res.nameResponse()))
         start = True
     elif (start == True):
         if (event.message.text != "決めて"):
@@ -60,7 +60,7 @@ def handler_message(event):
             rand = random.randrange(len(texts))
             line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="「"+texts[rand]+"」"+os.environ[res.judgeResponse()]))
+            TextSendMessage(text="「"+texts[rand]+"」"+res.judgeResponse()))
             texts.clear()
             start = False
 
