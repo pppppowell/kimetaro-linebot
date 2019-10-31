@@ -22,10 +22,10 @@ class Response:
     }
 
     def nameResponse(self):
-        rand=random.randrange(1,len(self.name)+1)
-        return self.name[rand]
+        # rand=random.randrange(1,len(self.name)+1)
+        return self.name[1]
 
     def judgeResponse(self):
-        rand = random.randrange(1, len(self.judge)+1)
-        return self.judge[rand]
+        # rand = random.randrange(1, len(self.judge)+1)
+        return self.judge[1]
     
