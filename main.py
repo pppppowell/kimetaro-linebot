@@ -44,20 +44,22 @@ texts = []
 def handler_message(event):
     global start
     global texts
-    if (event.message.text == "決め太郎" and start==False):
+    if (event.message.text == "決め太郎" and start == False):
+        texts.clear()
         line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text="ほいほい"))
-        start=True
-    if (event.message.text != "決めて" and start == True):
-        get_text(event.message.text)
-    if (event.message.text == "決めて" and start == True):
-        rand = random.randrange(len(texts))
-        line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text="「"+texts[rand]+"」でええんちゃう！？！？"))
-        texts.clear()
-        start = False
+        start = True
+    elif (start == True):
+        if (event.message.text != "決めて"):
+            get_text(event.message.text)
+        elif (event.message.text == "決めて"):
+            rand = random.randrange(len(texts))
+            line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="「"+texts[rand]+"」でええんちゃう！？！？"))
+            texts.clear()
+            start = False
 
 def get_text(text):
     global texts
