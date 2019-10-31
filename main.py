@@ -47,20 +47,15 @@ def handler_message(event,start):
         event.reply_token,
         TextSendMessage(text="なに"))
         start=True
-    if (start == True):
-        get_text(event.message.text)
-    if (event.message.text == "決めて" and start == True):
-        start = False
-        rand = random.randrange(len(texts))
-        line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text="「"+texts[rand]+"」でええんちゃう！？！？"))
-        texts=[]
-        
-    # line_bot_api.reply_message(
+    # if (start == True):
+    #     get_text(event.message.text)
+    # if (event.message.text == "決めて" and start == True):
+    #     start = False
+    #     rand = random.randrange(len(texts))
+    #     line_bot_api.reply_message(
     #     event.reply_token,
-    #     TextSendMessage(text=os.environ[Response.getResponse(event.message.text)])
-    #     )
+    #     TextSendMessage(text="「"+texts[rand]+"」でええんちゃう！？！？"))
+    #     texts=[]
 
 def get_text(text):
     texts.append = text
