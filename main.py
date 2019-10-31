@@ -10,6 +10,7 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
 import os
+import random
 
 app = Flask(__name__)
 
@@ -36,18 +37,33 @@ def callback():
     
     return 'OK'
 
+start = False
+texts=[]
+
 @handler.add(MessageEvent, message=TextMessage)
 def handler_message(event):
-    if (event.message.text == "決め太郎"):
+    if (event.message.text == "決め太郎" and start==False):
         line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text="なに")
-        )
+        TextSendMessage(text="なに"))
+        start=True
+    if (start == True):
+        get_text(event.message.text)
+    if (event.message.text == "決めて" and start == True):
+        start = False
+        rand = random.randrange(len(texts))
+        line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text="「"+texts[rand]+"」でええんちゃう！？！？"))
+        texts=[]
         
     # line_bot_api.reply_message(
     #     event.reply_token,
     #     TextSendMessage(text=os.environ[Response.getResponse(event.message.text)])
     #     )
+
+def get_text(text):
+    texts.append = text
 
 if __name__ == "__main__":
 # app.run()
