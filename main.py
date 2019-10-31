@@ -42,7 +42,7 @@ texts=[]
 
 @handler.add(MessageEvent, message=TextMessage)
 def handler_message(event,start):
-    if (event.message.text == "決め太郎" and start==False):
+    if (event.message.text == "決め太郎"):
         line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text="なに"))
