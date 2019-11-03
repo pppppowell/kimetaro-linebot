@@ -47,7 +47,7 @@ texts = []
 def handler_message(event):
     global start
     global texts
-    if (event.message.text == "決め太郎" and start == False):
+    if ("決め太郎" in event.message.text and start == False):
         texts.clear()
         line_bot_api.reply_message(
         event.reply_token,
